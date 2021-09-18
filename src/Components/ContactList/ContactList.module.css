@@ -1,0 +1,30 @@
+.list {
+  margin: 0 auto;
+  text-align: left;
+}
+
+.item {
+  background-color: #c1f7c1;
+  border: 1px;
+  border-radius: 10px;
+  border-color: #0b2a38;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 10px 0;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.button {
+  width: 75px;
+  border-radius: 20px;
+  border: none;
+  background-color: #c1f7c1;
+}
+
+.button:hover,
+.button:focus {
+  background-color: #0b2a38;
+  color: #ffffff;
+}

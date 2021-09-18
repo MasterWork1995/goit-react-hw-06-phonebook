@@ -1,0 +1,17 @@
+.section {
+  margin: 0 auto;
+  text-align: center;
+  max-width: 600px;
+}
+
+.title {
+  font-family: "Dancing Script", cursive;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: #0b2a38;
+  font-size: 60px;
+}
+
+.section:not(:last-child) {
+  margin-bottom: 50px;
+}

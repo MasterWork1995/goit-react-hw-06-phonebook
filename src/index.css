@@ -1,0 +1,60 @@
+body {
+  font-family: "DM Serif Display", serif;
+  background-image: url("./img/note.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.animate-exit-active {
+  animation: animate 800ms ease-out forwards;
+}
+
+.animate-enter-active {
+  animation: animate 800ms ease-in alternate-reverse;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateX(0);
+  }
+
+  30% {
+    opacity: 0.7;
+    transform: translateX(30px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+}
