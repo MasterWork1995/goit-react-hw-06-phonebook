@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import contactsActions from "../../redux/contacts/contacts-actions";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import PropTypes from "prop-types";
 import s from "./ContactList.module.css";
@@ -36,4 +38,20 @@ ContactsList.propTypes = {
   onDeleteContact: PropTypes.func.isRequired,
 };
 
-export default ContactsList;
+const onResultSearch = (contacts, filter) => {
+  return contacts.filter(
+    (contact) =>
+      contact.name.toLowerCase().includes(filter.toLocaleLowerCase()) ||
+      contact.number.includes(filter)
+  );
+};
+
+const mapStateToProps = ({ contacts: { items, filter } }) => ({
+  contacts: onResultSearch(items, filter),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onDeleteContact: (id) => dispatch(contactsActions.deleteContact(id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactsList);
