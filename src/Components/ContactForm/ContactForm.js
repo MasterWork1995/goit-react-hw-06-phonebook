@@ -1,12 +1,20 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import contactsActions from "../../redux/contacts/contacts-actions";
+import { toast } from "react-toastify";
+import { getItems } from "../../redux/contacts/contacts-selectors";
 import shortid from "shortid";
 import s from "./ContactForm.module.css";
 
-const ContactForm = ({ onSubmit }) => {
+const ContactForm = () => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
+  const items = useSelector(getItems);
+  const dispatch = useDispatch();
+
+  const checkDublicateName = (newName) => {
+    return items.find(({ name }) => name === newName);
+  };
 
   const handleChange = (e) => {
     const value = e.currentTarget.name;
@@ -26,11 +34,13 @@ const ContactForm = ({ onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(name, number);
-    reset();
-  };
 
-  const reset = () => {
+    if (checkDublicateName(name)) {
+      toast.error(`${name} already exists in the contact book`);
+      return;
+    }
+
+    dispatch(contactsActions.addContact(name, number));
     setName("");
     setNumber("");
   };
@@ -74,9 +84,4 @@ const ContactForm = ({ onSubmit }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  onSubmit: (name, number) =>
-    dispatch(contactsActions.addContact(name, number)),
-});
-
-export default connect(null, mapDispatchToProps)(ContactForm);
+export default ContactForm;
