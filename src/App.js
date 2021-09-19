@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import { useLocalStorage } from "./hooks/useLocalStorage";
-import shortid from "shortid";
+import React from "react";
 import Container from "./Components/Container";
 import Section from "./Components/Section";
 import ContactForm from "./Components/ContactForm";
@@ -8,9 +6,6 @@ import Filter from "./Components/Filter";
 import ContactsList from "./Components/ContactList";
 
 const App = () => {
-  // const [contacts, setContacts] = useLocalStorage("contacts", []);
-  // const [filter, setFilter] = useState("");
-
   // const onCheckName = (newName) => {
   //   return contacts.find(({ name }) => name === newName);
   // };
